@@ -1,0 +1,51 @@
+﻿@model Project.Models.Admin 
+@{
+    ViewBag.Title = "index";
+}
+
+
+
+<body>
+	 <section id="form">
+		<div class="container">
+			<div class="row">			
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>					
+
+                        
+                            @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+                            {
+                            <fieldset>
+                                <div class="form">
+                                    @Html.TextBoxFor(model => model.Username, new { type = "text", @placeholder = "Username", @class = "form-control" })
+                         
+                                    @Html.TextBoxFor(model => model.Password, new { type = "password", @placeholder = "Password", @class = "form-control" })                         
+                
+                                </div>
+
+                                <div class="clear"></div>
+                                <button type="submit" name="submit_login" id="submit_login" class="btn btn-default">Login</button>
+                                <div class="clear"></div>
+
+                            </fieldset>
+                            }
+
+					</div><!--/login form-->
+				</div>
+            </div>
+		</div>
+	</section><!--/form-->
+    
+
+
+
+    <script src="js/jquery.js"></script>
+	<script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>

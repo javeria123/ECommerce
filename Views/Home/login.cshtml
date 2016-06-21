@@ -1,0 +1,65 @@
+﻿@model Project.Models.User 
+@{
+    ViewBag.Title = "Login";
+}
+
+<body>
+    
+	 <section id="form">
+		<div class="container">
+			<div class="row">			
+				<div class="col-sm-4 col-sm-offset-4">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>					
+                        <h3>Already our customer?</h3>
+                        
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                            <fieldset>
+                                <div class="form">
+                                    @Html.TextBoxFor(model => model.Username, new { type = "text", @placeholder = "Username" , @required = "required" })
+                                    @Html.ValidationMessageFor(model=> model.Username)
+
+                                    @Html.TextBoxFor(model => model.Password, new { type = "password", @placeholder = "Password" , @required = "required", @pattern = ".{6,}"  })                         
+                                    @Html.ValidationMessageFor(model=> model.Password)
+                                </div>
+
+                                <div class="clear"></div>
+                                <button type="submit" name="submit_login" id="submit_login" class="btn btn-default">Login</button>
+                                <div class="clear"></div>
+
+                                <span>
+                                    <h4 style ="text-align:right">  @Html.ActionLink("Forget Password?", "ForgetPassword") </h4>					   
+							    </span>
+
+                                <div style="height:50px"></div>
+
+                                <span>
+                                    <h4>Haven't Registered Yet? @Html.ActionLink("Sign-Up", "signup") Now !!!!</h4>
+                                     </span>
+
+
+                            </fieldset>
+                            }
+
+					</div><!--/login form-->
+				</div>
+			
+             
+
+               
+            </div>
+		</div>
+	</section><!--/form-->
+  
+    
+  
+    <script src="js/jquery.js"></script>
+	<script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Delete";
+}
+
+
+@model Project.Models.Product 
+
+<body>
+	 <section id="form">
+		<div class="container">
+			<div class="row">	
+                <h2 style="text-align:center">Delete Product</h2>				
+                <div class="col-sm-5 col-sm-offset-1">					
+								
+                    <div style="height:100px"></div>
+                    <p><strong> Code:&nbsp; &nbsp;</strong> @Model.Id</p>
+                    <p><strong>Price:&nbsp; &nbsp;</strong> @Model.Price</p>
+                    <p><strong>Title:&nbsp; &nbsp;</strong> @Model.Title</p>
+                    <p><strong>Category:&nbsp; &nbsp;</strong> @Model.Category</p>
+                    <p><strong>Brand:&nbsp; &nbsp;</strong> @Model.Brand</p>
+                    <p><strong>Discount:&nbsp; &nbsp;</strong> @Model.Discount</p>
+                    <p><strong>Type:&nbsp; &nbsp;</strong> @Model.Type</p>
+                    <p><strong>Quantity:&nbsp; &nbsp;</strong> @Model.Quantity</p>
+                    <p><strong>Color:&nbsp; &nbsp;</strong> @Model.Color</p>
+                    <p>@Model.Description</p>
+
+                    <p><strong>Are you sure you want to delete? </strong>&nbsp;&nbsp;<a class="btn btn-primary" href="~/Admin/DeleteConfirm/@Model.Id">Yes</a> &nbsp; &nbsp;&nbsp; &nbsp; <a class="btn btn-primary" href="~/Admin/ViewAll">No</a></p>
+                     
+                
+				</div>
+				
+
+                <div class ="col-sm-4 col-sm-offset-1">
+                    <div style="height:100px"></div>
+					<div class="product-image-wrapper">
+						<div class="single-products">
+							<div class="productinfo text-center">
+							    <img src= "@Model.ImagePath" alt="" />
+                                <p>@Model.Title</p>
+							</div>										        
+						</div>							        
+					</div>						        
+                </div>
+            </div>
+		</div>
+	</section><!--/form-->
+
+  
+    <script src="js/jquery.js"></script>
+	<script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+

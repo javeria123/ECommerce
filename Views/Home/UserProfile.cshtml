@@ -1,0 +1,64 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+<body>
+	 <section id="form">
+		<div class="container">
+			<div class="row">	
+                <h2 style="text-align:center">View Profile</h2>				
+                <div class="col-sm-4 col-sm-offset-2">					
+								
+                    <div style="height:100px"></div>
+                    <p><strong> Username:&nbsp; &nbsp;</strong> @Model.Username</p>
+                    <p><strong> Name:&nbsp; &nbsp;</strong> @Model.Firstname @Model.Lastname</p>
+                    <p><strong> Password:&nbsp; &nbsp;</strong> @Model.Password</p>
+                    <p><strong> Email:&nbsp; &nbsp;</strong> @Model.Email</p>
+
+                    @{
+                        if(Model.Secret_Question == "0")
+                        {
+                            <p><strong> Secret_Question:&nbsp; &nbsp;</strong> Phone Number </p>
+                        }
+                        else if(Model.Secret_Question == "1")
+                        {
+                            <p><strong> Secret_Question:&nbsp; &nbsp;</strong> Favourite Book</p>
+                        }
+                        else if(Model.Secret_Question == "2")
+                        {
+                            <p><strong> Secret_Question:&nbsp; &nbsp;</strong> Favourite Uncle Name</p>
+                        }
+                        else
+                        {
+                            <p><strong> Secret_Question:&nbsp; &nbsp;</strong> Pet Name</p>
+                        }
+                    }
+                    <p><strong> Answer:&nbsp; &nbsp;</strong> @Model.Answer</p>
+
+                    <div style="height:100px"></div>
+                    <div class="clear"></div>
+                        <a href="~/Home/EditProfile" class="btn btn-primary">Edit Your Profile</a>
+                      <div class="clear"></div>
+
+				</div>
+				
+
+                <div class ="col-sm-4 col-sm-offset-1">
+                    <div style="height:100px "></div>
+                    <img width="150" height="150" src= "@Model.ImagePath" alt="" style=" border: 1px solid grey"/>
+					
+                </div>
+		</div>
+	</section><!--/form-->
+
+  
+    <script src="js/jquery.js"></script>
+	<script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>

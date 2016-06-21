@@ -1,0 +1,86 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "EditProfile";
+}
+
+<body>
+	 <section id="form">
+		<div class="container">
+			<div class="row">			
+                <div class="col-sm-4 col-sm-offset-3">
+					<div class="signup-form"><!--update form-->
+						<h2>Edit Profile</h2>
+                        
+                        @using (Html.BeginForm("UpdateProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+        
+                        <fieldset>
+                        <div class="form">
+                            @Html.TextBoxFor(model => model.Username, new { type = "text", @id = "username" , @placeholder = "Username"  , @value = @Model.Username , @readonly = "true"})
+                            @Html.ValidationMessageFor(model=> model.Username)
+
+
+                            @Html.TextBoxFor(model => model.Password, new { type = "password", @placeholder = "Password"  , @value = @Model.Password})
+                            @Html.ValidationMessageFor(model=> model.Password)
+
+                            @Html.TextBoxFor(model => model.Firstname , new { type = "text", @id = "Firstname" ,  @placeholder = "Firstname" , @value = @Model.Firstname})
+                            @Html.ValidationMessageFor(model=> model.Firstname)
+
+                            @Html.TextBoxFor(model => model.Lastname , new { type = "text", @placeholder = "Lastname"  , @value = @Model.Lastname})
+                            @Html.ValidationMessageFor(model=> model.Lastname)
+
+                            @Html.TextBoxFor(model => model.Email, new {type = "text" ,  @placeholder = "Email"  , @value = @Model.Email })
+                            @Html.ValidationMessageFor(model=> model.Email)
+                            
+                            <h5>Select Secret Question</h5>
+                            <select id="SecretQuestion" name="SecretQuestion">
+                                <option value="0">Phone number</option>
+                                <option value="1">Favourite Book</option>
+                                <option value="2">Favourite Uncle Name</option>
+                                <option value="3">Pet Name</option>
+                            </select>
+                            <div class="clear"></div>
+                            <div style="height:10px"></div>
+
+
+                            @Html.TextBoxFor(model => model.Answer , new { type = "text" , @id="Answer" , @placeholder = "Answer"  , @value = @Model.Answer })
+                            @Html.ValidationMessageFor(model=> model.Answer)
+
+
+                            @Html.HiddenFor(model =>model.ImagePath, new { @Value = ViewBag.ImagePath })
+                            <div class="clear"></div>
+                            Upload Image: <input type="file" name="image" />
+                            
+                        </div>
+
+                        
+
+                      <div class="clear"></div>
+                        <button type="submit" name="submit" id="submit" class="btn btn-default">Update</button>
+                      <div class="clear"></div>
+                    </fieldset>
+                  }
+
+					</div><!--/update form-->
+				</div>
+
+                <div class ="col-sm-4 col-sm-offset-1">
+                    <div style="height:100px "></div>
+                    <img width="150" height="150" src= "@Model.ImagePath" alt="" style=" border: 1px solid grey"/>
+					
+                </div>
+
+            </div>
+		</div>
+	</section><!--/form-->
+  
+    <script src="js/jquery.js"></script>
+	<script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>

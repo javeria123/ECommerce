@@ -1,0 +1,98 @@
+﻿@model Project.Models.User 
+@{
+    ViewBag.Title = "Signup";
+}
+
+<body>
+	 <section id="form">
+		<div class="container">
+			<div class="row">			
+                <div class="col-sm-4 col-sm-offset-3">
+					<div class="signup-form"><!--sign up form-->
+						<h2>New User Signup!</h2>
+                        <h3>Not our registered customer yet?</h3>					
+                        <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+                        @using (Html.BeginForm("Signup", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+        
+                        <fieldset>
+                        <div class="form">
+                            @Html.TextBoxFor(model => model.Username, new { type = "text", @id = "username" , @placeholder = "Username" })
+                            @Html.ValidationMessageFor(model=> model.Username)
+
+
+                            @Html.TextBoxFor(model => model.Password, new { type = "password", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(model=> model.Password)
+
+                            @Html.TextBoxFor(model => model.Firstname , new { type = "text", @id = "Firstname" ,  @placeholder = "Firstname"})
+                            @Html.ValidationMessageFor(model=> model.Firstname)
+
+                            @Html.TextBoxFor(model => model.Lastname , new { type = "text", @placeholder = "Lastname" })
+                            @Html.ValidationMessageFor(model=> model.Lastname)
+
+                            @Html.TextBoxFor(model => model.Email, new {type = "text" ,  @placeholder = "Email" })
+                            @Html.ValidationMessageFor(model=> model.Email)
+                            
+                            <h5>Select Secret Question</h5>
+                            <select id="SecretQuestion" name="SecretQuestion">
+                                <option value="0">Phone number</option>
+                                <option value="1">Favourite Book</option>
+                                <option value="2">Favourite Uncle Name</option>
+                                <option value="3">Pet Name</option>
+                            </select>
+                            <div class="clear"></div>
+                            <div style="height:10px"></div>
+
+
+                            @Html.TextBoxFor(model => model.Answer , new { type = "text" , @id="Answer" , @placeholder = "Answer"  })
+                            @Html.ValidationMessageFor(model=> model.Answer)
+
+                            <div class="clear"></div>
+                            Upload Image: <input type="file" name="image" />
+                            
+                        </div>
+
+                      <div class="clear"></div>
+                        <button disabled="disabled" type="submit" name="submit_signup" id="submit_signup" class="btn btn-default">Signup</button>
+                      <div class="clear"></div>
+                    </fieldset>
+                  }
+
+					</div><!--/sign up form-->
+				</div>
+                <div class="col-sm-4">
+                    <div style="height:85px"></div>
+                    <p id="result"></p>
+                </div>
+
+            </div>
+		</div>
+	</section><!--/form-->
+  
+    <script>
+        $(document).ready(function () {
+            $('#username').keyup(function () {
+                var userName = $('#username').val();
+                $.getJSON("/Home/CheckUserName?Username=" + userName, function (data) {
+                    if (data) {
+                        $('#result').text("Username already taken");
+                        $('#submit_signup').prop('disabled', true);
+                    }
+                    else {
+                        $('#result').text("UserName is available");
+                        $('#submit_signup').prop('disabled', false);
+                    }
+                });
+            });
+        });
+    </script>
+  
+    <script src="js/jquery.js"></script>
+	<script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>

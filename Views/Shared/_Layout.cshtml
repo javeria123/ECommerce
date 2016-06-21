@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   @Scripts.Render("~/bundles/jquery")
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Content/price-range.css" rel="stylesheet">
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/main.css" rel="stylesheet">
+    <link href="~/Content/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+<body>
+
+    <header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> 0900-78601</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> bsef13m502@pucit.edu.pk</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+                            @{
+                                try
+                                {
+                                    var r = "Welcome  , " + HttpContext.Current.Session["Firstname"].ToString() + " " + HttpContext.Current.Session["Lastname"].ToString();
+                                    <div class="contactinfo">
+							            <ul class="nav nav-pills">
+								            <li><a href="#"><i class="fa fa-user"></i>@r</a></li>
+								         </ul>
+						            </div>    
+                                
+                                }
+                                catch (Exception e) 
+                                { 
+							        <ul class="nav navbar-nav">
+								        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							        </ul>
+                                }
+                            }
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+		
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="~/Home/Index"><img src="~/Content/home/logo.png" alt="" /></a>
+						</div>
+						<div class="btn-group pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									USA
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Canada</a></li>
+									<li><a href="#">UK</a></li>
+								</ul>
+							</div>
+							
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									DOLLAR
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Canadian Dollar</a></li>
+									<li><a href="#">Pound</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+                                 @{
+                                    try{
+                                        if (HttpContext.Current.Session["Username"].ToString() != null)
+								        {
+                                            <li><a href="~/Home/UserProfile"><i class="fa fa-user"></i> Profile</a></li>                              
+                                        }
+                                    }
+                                    catch(Exception e){}                      
+                                }
+								<!--<li><a href="#"><i class="fa fa-user"></i> Account</a></li> -->
+								<!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li> -->
+								<li><a href="~/Home/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                @{
+                                    try{
+                                        if (HttpContext.Current.Session["Username"].ToString() != null)
+								        {
+                                            <li><a href="~/Home/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>                              
+                                        }
+                                    }
+                                    catch(Exception e){
+                                        <li><a href="~/Home/login"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                    }                      
+                                }
+								
+
+                                @{
+                                    try{
+                                        if (HttpContext.Current.Session["Username"].ToString() != null)
+								        {
+                                            <li><a href="~/Home/Logout"><i class="fa fa-lock"></i> Logout</a></li>                              
+                                        }
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        try
+                                        {                                           
+                                            if (HttpContext.Current.Session["AdminUsername"].ToString() != null)
+								            {
+                                                <li><a href="~/Admin/Logout"><i class="fa fa-lock"></i> Logout</a></li>                              
+                                            }
+                                        }
+                                        catch (Exception e1)
+                                        {
+                                            
+                                            <li><a href="~/Home/login"><i class="fa fa-lock"></i> Login</a></li>
+                                        }   
+                                    }
+                                }
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+	
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="~/Home/index" class="active">Home</a></li>
+								<li><a href="~/Home/Men">Men</a></li>                                    
+                                <li><a href="~/Home/Women">Women</a></li>
+                                <li><a href="~/Home/Kids">Kids</a></li>
+
+
+								<!--<li class="drvopdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="~/Home/blog">Blog List</a></li>
+										<li><a href="~/Home/blogSingle">Blog Single</a></li>
+                                    </ul>
+                                </li> -->
+								<li><a href="~/Home/contactus">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+
+    @RenderBody()
+
+
+    <footer id="footer"><!--Footer-->
+		
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2016 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    
+</body>
+</html>

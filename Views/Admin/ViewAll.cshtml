@@ -1,0 +1,49 @@
+﻿@model List<Project.Models.Product>
+@{
+    ViewBag.Title = "ViewAll";
+}
+
+<body>
+    <div class="container">
+        
+        <p><strong>Click Here To Add New Product</strong>&nbsp;&nbsp;&nbsp; <a class="btn btn-primary" href = "AddProduct">Add Product</a></p>
+        <div style="height:50px"></div>
+        <table width="100%">
+            <tr>
+                <th>Product Code</th>
+                <th>Price</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Color</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            @{
+                foreach (var prod in Model)
+                {
+                    <tr>
+                        <td>@prod.Id</td>
+                        <td>@prod.Price</td>
+                        <td>@prod.Title</td>               
+                        <td>@prod.Category</td>
+                        <td>@prod.Brand</td>                
+                        <td>@prod.Type</td>
+                        <td>@prod.Quantity</td>
+                        <td>@prod.Color</td>
+                        <td><a class="btn btn-primary" href = "Edit/@prod.Id">Edit</a></td>
+                        <td><a class="btn btn-primary" href ="Delete/@prod.Id">Delete</a></td>
+                    </tr>
+                }
+            }
+
+
+
+        </table>
+
+        <div style="height:100px"></div>
+    </div>
+</body>
