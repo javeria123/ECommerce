@@ -9,7 +9,6 @@
 			<div class="row">			
                 <div class="col-sm-4 col-sm-offset-3">
 					<div class="signup-form"><!--sign up form-->
-						<h2>New User Signup!</h2>
                         <h3>Not our registered customer yet?</h3>					
                         <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
                         @using (Html.BeginForm("Signup", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -61,7 +60,7 @@
 					</div><!--/sign up form-->
 				</div>
                 <div class="col-sm-4">
-                    <div style="height:85px"></div>
+                    <div style="height:185px"></div>
                     <p id="result"></p>
                 </div>
 
@@ -75,7 +74,7 @@
                 var userName = $('#username').val();
                 $.getJSON("/Home/CheckUserName?Username=" + userName, function (data) {
                     if (data) {
-                        $('#result').text("Username already taken");
+                        $('#result').text("Username not available");
                         $('#submit_signup').prop('disabled', true);
                     }
                     else {
